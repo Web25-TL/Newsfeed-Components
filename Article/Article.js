@@ -87,28 +87,97 @@ const data = [
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
   }
 ];
+{
+  title: `Professional Software Development in 2020`,
+  date: `Jan 1st, 2019`,
+  firstParagraph: `Jimmy Kimmel Took a Bath! Jimmy Kimmel Took a Bath!Jimmy Kimmel Took a Bath! Jimmy Kimmel Took a Bath! Jimmy Kimmel Took a Bath!
+  Jimmy Kimmel Took a Bath! Jimmy Kimmel Took a Bath!Jimmy Kimmel Took a Bath! Jimmy Kimmel Took a Bath! Jimmy Kimmel Took a Bath!
+  Jimmy Kimmel Took a Bath! Jimmy Kimmel Took a Bath!Jimmy Kimmel Took a Bath! Jimmy Kimmel Took a Bath! Jimmy Kimmel Took a Bath!
+  Jimmy Kimmel Took a Bath! Jimmy Kimmel Took a Bath!Jimmy Kimmel Took a Bath! Jimmy Kimmel Took a Bath! Jimmy Kimmel Took a Bath!
+  Jimmy Kimmel Took a Bath! Jimmy Kimmel Took a Bath!Jimmy Kimmel Took a Bath! Jimmy Kimmel Took a Bath! Jimmy Kimmel Took a Bath!
+  Jimmy Kimmel Took a Bath! Jimmy Kimmel Took a Bath!Jimmy Kimmel Took a Bath! Jimmy Kimmel Took a Bath! Jimmy Kimmel Took a Bath! Jimmy Kimmel Took a Bath! Jimmy Kimmel Took a Bath!Jimmy Kimmel Took a Bath! Jimmy Kimmel Took a Bath! Jimmy Kimmel Took a Bath!   
+  Jimmy Kimmel Took a Bath! Jimmy Kimmel Took a Bath!`,
 
-/* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
+  secondParagraph: `It's Raining its Pouring The sasquatch man Is Snoring Hodor hodor hodor hodor hodor? `,
+
+  thirdParagraph: `Once upon a midnight dreary...A summer's night crept passed unwearily, springing forth a brand new day gone was the crow a bluejay to stay
+  Once upon a midnight dreary...A summer's night crept passed unwearily, springing forth a brand new day gone was the crow a bluejay to stay
+  Once upon a midnight dreary...A summer's night crept passed unwearily, springing forth a brand new day gone was the crow a bluejay to stay
+  Once upon a midnight dreary...A summer's night crept passed unwearily, springing forth a brand new day gone was the crow a bluejay to stay
+  Once upon a midnight dreary...A summer's night crept passed unwearily, springing forth a brand new day gone was the crow a bluejay to stay
+  Once upon a midnight dreary...A summer's night crept passed unwearily, springing forth a brand new day gone was the crow a bluejay to stay
+  Once upon a midnight dreary...A summer's night crept passed unwearily, springing forth a brand new day gone was the crow a bluejay to stay
+  Once upon a midnight dreary...A summer's night crept passed unwearily, springing forth a brand new day gone was the crow a bluejay to stay
+  Once upon a midnight dreary...A summer's night crept passed unwearily, springing forth a brand new day gone was the crow a bluejay to stay.`
+}
+]
+
+
+
+
+const datalist=data.map((i) =>
+  (i)
+)
+const articleElementCreator=datalist.map( ( i ) => {
   
-  <div class="article">
+  let article=document.createElement( 'div' );
+  article.classList.add( 'article' );
+
+  let title=document.createElement( 'h2' );
+  title.textContent=i.title;
+
+  let date=document.createElement( 'p' );
+  date.textContent=i.date;
+  article.appendChild( date );
+  date.prepend( title );
+  let p1=document.createElement( 'p' );
+  p1.textContent=i.firstParagraph;
+  let p2=document.createElement( 'p' );
+  p2.textContent=i.secondParagraph;
+  let p3=document.createElement( 'p' );
+  p3.textContent=i.thirdParagraph;
+  article.appendChild( p1 );
+  article.appendChild( p2 );
+  article.appendChild( p3 );
+  let expandButton=document.createElement( 'span' );
+  expandButton.classList.add('expandButton')
+  article.appendChild(expandButton)
+  expandButton.textContent='expand';
+   
+  expandButton.addEventListener('click',(event)=>{article.classList.toggle('article-open')} )
+  return article;
+ 
+ 
+}
+)
+const articleDiv=document.querySelector( '.articles' );
+
+articleElementCreator.forEach((i) => {
+  articleDiv.appendChild( i )
+})
+
+
+/* *Step 1: Create a function that creates a component. You will want your component to look like the template below:
+
+  <div class="article"> createArticle() toggleArticle()
     <h2>{title of the article}</h2>
     <p class="date">{date of the article}</p>
 
-    {three separate paragraph elements}
+    {three separate paragraph elements} createparagraphs()
 
-    <span class='expandButton'></span>
+    <span class='expandButton'></span> createBtn() addeventlistner()
   </div>
 
   Hint: You will need to use createElement more than once here!
 
-  Your function should take either an object as it's one argument, or 5 separate arguments mapping to each piece of the data object above.
+  Your function should take either an object as it's one argument,
+  or 5 separate arguments mapping to each peice of the data object above.
 
-  Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
+  Step 2: Add an event listener to the expandButton span.
+   This event listener should toggle the class 'article-open' on the 'article' div.
 
   Step 3: return the entire component.
 
   Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
 
-  Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
-
-*/
+  Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new artible*/
